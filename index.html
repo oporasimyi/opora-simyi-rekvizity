@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>БО «БФ ОПОРА СІМ’Ї»</title>
   <style>
     body {
@@ -16,49 +17,77 @@
       min-height: 100vh;
       padding: 20px;
     }
+
     .card {
       background: white;
       border-radius: 20px;
       padding: 30px;
-      max-width: 500px;
+      max-width: 520px;
       width: 100%;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
+
     img {
       width: 180px;
       margin-bottom: 20px;
     }
+
     h1 {
       color: #1d4ed8;
       margin-bottom: 10px;
+      font-size: 30px;
     }
+
     p {
       line-height: 1.6;
+      color: #374151;
     }
+
     .requisites {
       background: #f8fafc;
       border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 15px;
+      border-radius: 14px;
+      padding: 18px;
       text-align: left;
-      margin: 20px 0;
-      white-space: pre-line;
+      margin: 24px 0;
     }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .value {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 10px;
+      word-break: break-all;
+      margin-bottom: 8px;
+    }
+
     button {
       background: #1d4ed8;
       color: white;
       border: none;
-      padding: 14px 20px;
-      border-radius: 12px;
-      font-size: 16px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 15px;
       cursor: pointer;
       width: 100%;
-      margin-top: 10px;
+      margin-top: 8px;
     }
+
     button:hover {
       background: #1e40af;
     }
+
     .thanks {
       margin-top: 25px;
       color: #6b7280;
@@ -67,32 +96,78 @@
   </style>
 </head>
 <body>
-  <div class="card">
-    <img src="IMG_0276.jpeg" alt="Логотип БО «БФ ОПОРА СІМ’Ї»">
-    <h1>БО «БФ ОПОРА СІМ’Ї»</h1>
-    <p>
-      Підтримайте діяльність благодійного фонду.
-      Ваша допомога спрямовується на підтримку військовослужбовців та їхніх родин.
-    </p>
 
-    <div class="requisites" id="req">Отримувач: БО «БФ ОПОРА СІМ’Ї»
-ЄДРПОУ: 46296127
-IBAN: UA893203710000000260026889600</div>
+<div class="card">
+  <img src="IMG_0276.jpeg" alt="Логотип БО «БФ ОПОРА СІМ’Ї»">
 
-    <button onclick="copyReq()">Скопіювати реквізити</button>
+  <h1>БО «БФ ОПОРА СІМ’Ї»</h1>
 
-    <div class="thanks">
-      Дякуємо за вашу підтримку!
+  <p>
+    Підтримайте діяльність благодійного фонду.
+    Ваша допомога спрямовується на підтримку військовослужбовців та їхніх родин.
+  </p>
+
+  <div class="requisites">
+
+    <div class="field">
+      <div class="label">Отримувач</div>
+      <div class="value">БО «БФ ОПОРА СІМ’Ї»</div>
     </div>
+
+    <div class="field">
+      <div class="label">ЄДРПОУ</div>
+      <div class="value" id="edrpou">46296127</div>
+      <button onclick="copyText('edrpou', 'ЄДРПОУ скопійовано!')">
+        Скопіювати ЄДРПОУ
+      </button>
+    </div>
+
+    <div class="field">
+      <div class="label">IBAN</div>
+      <div class="value" id="iban">UA893203710000000260026889600/980</div>
+      <button onclick="copyText('iban', 'IBAN скопійовано!')">
+        Скопіювати IBAN
+      </button>
+    </div>
+
+    <div class="field">
+      <div class="label">Призначення платежу</div>
+      <div class="value">Благодійна пожертва</div>
+    </div>
+
+    <button onclick="copyAll()">
+      Скопіювати всі реквізити
+    </button>
+
   </div>
 
-  <script>
-    function copyReq() {
-      const text = document.getElementById('req').innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Реквізити скопійовано!');
-      });
-    }
-  </script>
+  <div class="thanks">
+    Дякуємо за вашу підтримку!
+  </div>
+</div>
+
+<script>
+  function copyText(id, message) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      alert(message);
+    });
+  }
+
+  function copyAll() {
+    const text =
+`БО «БФ ОПОРА СІМ’Ї»
+
+Отримувач: БО «БФ ОПОРА СІМ’Ї»
+ЄДРПОУ: 46296127
+IBAN: UA893203710000000260026889600/980
+Призначення платежу: Благодійна пожертва`;
+
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Усі реквізити скопійовано!');
+    });
+  }
+</script>
+
 </body>
 </html>
