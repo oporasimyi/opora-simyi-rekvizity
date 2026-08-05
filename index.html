@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>БО «БФ ОПОРА СІМ’Ї»</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    img {
+      width: 180px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .requisites {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: left;
+      margin: 20px 0;
+      white-space: pre-line;
+    }
+    button {
+      background: #1d4ed8;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #1e40af;
+    }
+    .thanks {
+      margin-top: 25px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="logo.png" alt="Логотип БО «БФ ОПОРА СІМ’Ї»">
+    <h1>БО «БФ ОПОРА СІМ’Ї»</h1>
+    <p>
+      Підтримайте діяльність благодійного фонду.
+      Ваша допомога спрямовується на підтримку військовослужбовців та їхніх родин.
+    </p>
+
+    <div class="requisites" id="req">Отримувач: БО «БФ ОПОРА СІМ’Ї»
+ЄДРПОУ: 46296127
+IBAN: UA893203710000000260026889600</div>
+
+    <button onclick="copyReq()">Скопіювати реквізити</button>
+
+    <div class="thanks">
+      Дякуємо за вашу підтримку!
+    </div>
+  </div>
+
+  <script>
+    function copyReq() {
+      const text = document.getElementById('req').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Реквізити скопійовано!');
+      });
+    }
+  </script>
+</body>
+</html>
